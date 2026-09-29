@@ -1,9 +1,12 @@
 Source: dh-vci
 Section: devel
 Priority: optional
-Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.6
+Maintainer: NuDanOS Maintainers <jon@fernandez.tech>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/nudanos/dh-vci.git
+Vcs-Browser: https://github.com/nudanos/dh-vci
 
 Package: dh-vci
 Architecture: all
