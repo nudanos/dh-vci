@@ -34,7 +34,7 @@ arguments, e.g. B<dh_vci_enable quota.component> and B<dh_vci_enable
 
 =item debian/I<package>.component
 
-If this exists, it is installed into lib/vci/components/I<package>.component in
+If this exists, it is installed into usr/lib/vci/components/I<package>.component in
 the package build directory.
 
 =item debian/I<package>.tmpfile
@@ -115,7 +115,7 @@ foreach my $package (@{$dh{DOPACKAGES}}) {
 
 	my $component=pkgfile($package,"component");
 	if ($component ne '') {
-		my $path="$tmpdir/lib/vci/components";
+		my $path="$tmpdir/usr/lib/vci/components";
 		if (! -d "$path") {
 			doit("install","-d","$path");
 		}
@@ -131,7 +131,7 @@ foreach my $package (@{$dh{DOPACKAGES}}) {
 			# adding an alias, e.g. linking smartmontools.component
 			# -> smartd.component.
 			return if -l $name;
-			return unless $name =~ m,^$tmpdir/lib/vci/components/([^/]+).component$,;
+			return unless $name =~ m,^$tmpdir/usr/lib/vci/components/([^/]+).component$,;
 			push @installed_components, $1;
 		},
 		no_chdir => 1,
@@ -153,7 +153,7 @@ foreach my $package (@{$dh{DOPACKAGES}}) {
 			if (defined($full)) {
 				$name = $full;
 			} else {
-				warning(qq|Could not find "$name" in the /lib/vci/components directory of $package. |);
+				warning(qq|Could not find "$name" in the /usr/lib/vci/components directory of $package. |);
 			}
 		}
 		push @components, $name;
